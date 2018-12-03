@@ -10,7 +10,7 @@ else{
 }
 
 function registerPush(appPubkey) {
-  navigator.serviceWorker.register('service-worker.js');
+  navigator.serviceWorker.register('js/service-worker.js');
   navigator.serviceWorker.ready.then(function(registration) {
       return registration.pushManager.getSubscription()
           .then(function(subscription) {
