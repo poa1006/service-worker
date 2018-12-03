@@ -2,7 +2,7 @@
 const publicKey = 'BLCsYsGbR2BqmIwSPlKvVPxQKqqsO_rRYBpuFQC3pRSvOXxlVkfCVF9tNiA1HrHp0AUm_JKpMQnvob_ZO8OoVpE';
 
 if (navigator.serviceWorker) {
-  console.log('serviceWorker first try');
+  console.log('serviceWorker live');
   registerPush(publicKey);
 }
 else{
@@ -11,7 +11,8 @@ else{
 
 function registerPush(appPubkey) {
   console.log('register service worker');
-  navigator.serviceWorker.register('js/service-worker.js');
+  navigator.serviceWorker.register('service-worker.js');
+
   navigator.serviceWorker.ready.then(function(registration) {
       return registration.pushManager.getSubscription()
           .then(function(subscription) {

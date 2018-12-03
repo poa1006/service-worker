@@ -1,3 +1,5 @@
+console.log('serviceWorker work');
+
 self.addEventListener('push', function(event) {
   console.log('Received push');
   const payload = event.data ? event.data.text() : 'no payload';
