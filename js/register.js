@@ -32,12 +32,12 @@ function registerPush(appPubkey) {
               const request = new XMLHttpRequest();
               const url = 'https://ax7asfdg4f.execute-api.ap-southeast-2.amazonaws.com/prod';
               request.open("POST", url, true);
-              request.setRequestHeader('Access-Control-Allow-Headers', '*');
+              
               request.onreadystatechange = function() { // Call a function when the state changes.
                 if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
                     // Request finished. Do processing here.
                     console.log("Subscription Success");
-
+                    
                 }
               }
               request.send(JSON.stringify({ subscription: subscription })); 
