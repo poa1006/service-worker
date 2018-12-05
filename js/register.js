@@ -16,7 +16,7 @@ function registerPush(appPubkey) {
   navigator.serviceWorker.ready.then(function(registration) {
       return registration.pushManager.getSubscription()
           .then(function(subscription) {
-              console.log(JSON.stringify({ subscription: subscription }));
+              //console.log(JSON.stringify({ subscription: subscription }));
               if (subscription) {
                   return subscription;
               }
@@ -28,6 +28,19 @@ function registerPush(appPubkey) {
           }) 
           .then(function(subscription) {
               console.log(JSON.stringify({ subscription: subscription }));
+              // Create a request variable and assign a new XMLHttpRequest object to it.
+              const request = new XMLHttpRequest();
+              const url = 'https://ax7asfdg4f.execute-api.ap-southeast-2.amazonaws.com/prod';
+              request.open("POST", url, true);
+              
+              request.onreadystatechange = function() { // Call a function when the state changes.
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    // Request finished. Do processing here.
+                    console.log("Subscription Success");
+                    
+                }
+              }
+              request.send(JSON.stringify({ subscription: subscription })); 
           });
   });
 }
