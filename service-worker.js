@@ -11,10 +11,7 @@ self.addEventListener('push', function(event) {
     Promise.all([
       self.registration.showNotification(
         data.title,
-        {
-          body:  data.message,
-          icon: data.icon
-        })
+        data.option)
     ])
   );
 });
