@@ -19,8 +19,13 @@ self.addEventListener('push', function(event) {
 self.addEventListener('notificationclick', function(event) {
   console.log("click!!!");
   event.notification.close();
+  
+  let clickResponsePromise = Promise.resolve();
+  if (event.notification && event.notification.url) {
+    clickResponsePromise = clients.openWindow(event.notification.url);
+  }
 
-  const request = new XMLHttpRequest();
+  const request = new window.XMLHttpRequest();
   const url = 'https://ax7asfdg4f.execute-api.ap-southeast-2.amazonaws.com/prod/clicked';
   request.open("POST", url, true);
   
@@ -31,11 +36,6 @@ self.addEventListener('notificationclick', function(event) {
     }
   }
   
-  let clickResponsePromise = Promise.resolve();
-  if (event.notification && event.notification.url) {
-    clickResponsePromise = clients.openWindow(event.notification.url);
-  }
-
   if (event.notification && event.notification.eventId) {
     request.send(JSON.stringify({ Guid: eventId }));
   }
