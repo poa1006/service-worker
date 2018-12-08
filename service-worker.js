@@ -25,21 +25,6 @@ self.addEventListener('notificationclick', function(event) {
     clickResponsePromise = clients.openWindow(event.notification.url);
   }
 
-  const request = new window.XMLHttpRequest();
-  const url = 'https://ax7asfdg4f.execute-api.ap-southeast-2.amazonaws.com/prod/clicked';
-  request.open("POST", url, true);
-  
-  request.onreadystatechange = function() { // Call a function when the state changes.
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        // Request finished. Do processing here.
-        console.log("Clicked campaign updated");
-    }
-  }
-  
-  if (event.notification && event.notification.eventId) {
-    request.send(JSON.stringify({ Guid: eventId }));
-  }
-
   event.waitUntil(
     Promise.all([
       clickResponsePromise
