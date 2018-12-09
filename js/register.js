@@ -30,7 +30,7 @@ function registerPush(appPubkey) {
               console.log(JSON.stringify({ subscription: subscription }));
               // Create a request variable and assign a new XMLHttpRequest object to it.
               const request = new XMLHttpRequest();
-              const url = 'https://ax7asfdg4f.execute-api.ap-southeast-2.amazonaws.com/prod';
+              const url = 'https://u63kgcur77.execute-api.us-west-2.amazonaws.com/dev/subs';
               request.open("POST", url, true);
               
               request.onreadystatechange = function() { // Call a function when the state changes.
