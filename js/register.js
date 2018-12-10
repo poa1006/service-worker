@@ -18,10 +18,10 @@ function registerPush(appPubkey) {
           .then(function(subscription) {
               //console.log(JSON.stringify({ subscription: subscription }));
               if (subscription) {
-                  coonsole.log("first");
+                  console.log("first");
                   return subscription;
               }
-              coonsole.log("out");
+              console.log("out");
               return registration.pushManager.subscribe({
                   userVisibleOnly: true,
                   applicationServerKey: urlBase64ToUint8Array(appPubkey)
